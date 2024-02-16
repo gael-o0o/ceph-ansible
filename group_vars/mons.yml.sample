@@ -63,7 +63,11 @@ dummy:
 #    - -i={{ monitor_name }}
 #    - --mon-data=/var/lib/ceph/mon/{{ cluster }}-{{ monitor_name }}
 #    - --public-addr={{ _monitor_addresses[inventory_hostname] }}
+<<<<<<< HEAD
 #    - --mon-initial-members={{ groups[mon_group_name] | map('extract', hostvars, 'ansible_facts') | map(attribute='hostname') | join(',') }}
+=======
+#    - --mon-initial-members={{ groups[mon_group_name] | join(',') }}
+>>>>>>> 82478091d (simplify monitor address setting)
 
 
 ###########

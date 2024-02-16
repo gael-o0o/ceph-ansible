@@ -252,6 +252,10 @@ selection or other aspects of your cluster.
 
 - ``ceph_origin``
 - ``public_network``
+<<<<<<< HEAD
+=======
+
+>>>>>>> 82478091d (simplify monitor address setting)
 
 When deploying RGW instance(s) you are required to set the ``radosgw_interface`` or ``radosgw_address`` config option.
 
