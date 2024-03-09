@@ -24,7 +24,11 @@ handler_health_osd_check_delay: 10
 ceph_docker_registry: quay.io
 ceph_docker_image: ceph/daemon-base
 <<<<<<< HEAD
+<<<<<<< HEAD
 ceph_docker_image_tag: latest-main
 =======
 ceph_docker_image_tag: latest-reef
 >>>>>>> f221efde4 (fix upgrade)
+=======
+ceph_docker_image_tag: latest-reef
+>>>>>>> 6becd71bf (osd: drop openstack related tasks)
