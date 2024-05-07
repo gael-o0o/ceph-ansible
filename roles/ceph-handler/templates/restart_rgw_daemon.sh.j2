@@ -81,7 +81,13 @@ check_rest() {
 for ((i=0; i<${RGW_NUMS}; i++)); do
   # Check if systemd unit exists
   # This is needed for new instances as the restart might trigger before the deployment
+<<<<<<< HEAD
   if ! systemctl list-units --full --all | grep -q "ceph-radosgw@rgw.${RGW_ZONE}.${HOST_NAME}.${INSTANCES_NAME[i]}"; then
+=======
+  if systemctl list-units --full --all | grep -q "ceph-radosgw@rgw.${RGW_ZONE}.${HOST_NAME}.${INSTANCES_NAME[i]}"; then
+    systemctl restart ceph-radosgw@rgw.${RGW_ZONE}.${HOST_NAME}.${INSTANCES_NAME[i]}
+  else
+>>>>>>> faae48d75 (ceph-rgw: introduce rgw zone to the name schema)
     echo "Systemd unit ceph-radosgw@rgw.${RGW_ZONE}.${HOST_NAME}.${INSTANCES_NAME[i]} does not exist."
     continue
   fi

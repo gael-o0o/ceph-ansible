@@ -1019,6 +1019,7 @@
     - name: Remove legacy ceph radosgw directory
       ansible.builtin.file:
         path: "/var/lib/ceph/radosgw/{{ cluster }}-rgw.{{ rgw_zone }}.{{ ansible_facts['hostname'] }}"
+<<<<<<< HEAD
         state: absent
 
 <<<<<<< HEAD
@@ -1073,6 +1074,8 @@
     - name: Remove legacy ceph radosgw directory
       ansible.builtin.file:
         path: "/var/lib/ceph/radosgw/{{ cluster }}-rgw.{{ ansible_facts['hostname'] }}"
+=======
+>>>>>>> faae48d75 (ceph-rgw: introduce rgw zone to the name schema)
         state: absent
 
     - name: Create nfs ganesha cluster

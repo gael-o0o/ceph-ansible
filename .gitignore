@@ -22,4 +22,7 @@ ceph-ansible.spec
 !raw_install_python.yml
 !requirements.yml
 .vscode/
+<<<<<<< HEAD
 .ansible/
+=======
+>>>>>>> faae48d75 (ceph-rgw: introduce rgw zone to the name schema)
