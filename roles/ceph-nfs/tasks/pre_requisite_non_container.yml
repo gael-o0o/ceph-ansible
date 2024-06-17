@@ -47,7 +47,11 @@
     - groups.get(mon_group_name, []) | length > 0
   block:
     - name: Get keys from monitors
+<<<<<<< HEAD
       ceph_key_info:
+=======
+      ceph_key:
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
         name: "{{ item.name }}"
         cluster: "{{ cluster }}"
         output_format: plain

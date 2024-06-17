@@ -43,7 +43,11 @@
         mode: "0600"
       no_log: "{{ no_log_on_ceph_key_tasks }}"
       environment:
+<<<<<<< HEAD
         CEPH_CONTAINER_IMAGE: "{{ ceph_docker_registry + '/' + ceph_docker_image + ':' + ceph_docker_image_tag if containerized_deployment | bool else '' }}"
+=======
+        CEPH_CONTAINER_IMAGE: "{{ ceph_docker_registry + '/' + ceph_docker_image + ':' + ceph_docker_image_tag if containerized_deployment else None }}"
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
         CEPH_CONTAINER_BINARY: "{{ container_binary }}"
       delegate_to: "{{ groups.get(mon_group_name)[0] }}"
       loop: "{{ keyrings_list }}"
@@ -52,13 +56,21 @@
         - item.create | default(False) | bool
 
     - name: Get keys from monitors
+<<<<<<< HEAD
       ceph_key_info:
+=======
+      ceph_key:
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
         name: "{{ item.name }}"
         cluster: "{{ cluster }}"
         output_format: plain
         state: info
       environment:
+<<<<<<< HEAD
         CEPH_CONTAINER_IMAGE: "{{ ceph_docker_registry + '/' + ceph_docker_image + ':' + ceph_docker_image_tag if containerized_deployment | bool else '' }}"
+=======
+        CEPH_CONTAINER_IMAGE: "{{ ceph_docker_registry + '/' + ceph_docker_image + ':' + ceph_docker_image_tag if containerized_deployment | bool else None }}"
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
         CEPH_CONTAINER_BINARY: "{{ container_binary }}"
       register: _rgw_keys
       loop: "{{ keyrings_list }}"

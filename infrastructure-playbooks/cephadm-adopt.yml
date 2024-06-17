@@ -35,6 +35,7 @@
     - "{{ rgw_group_name|default('rgws') }}"
     - "{{ mgr_group_name|default('mgrs') }}"
     - "{{ rbdmirror_group_name|default('rbdmirrors') }}"
+    - "{{ nfs_group_name|default('nfss') }}"
     - "{{ monitoring_group_name|default('monitoring') }}"
   become: true
   any_errors_fatal: true
@@ -143,7 +144,8 @@
           inventory_hostname in groups.get(mds_group_name, []) or
           inventory_hostname in groups.get(rgw_group_name, []) or
           inventory_hostname in groups.get(mgr_group_name, []) or
-          inventory_hostname in groups.get(rbdmirror_group_name, [])
+          inventory_hostname in groups.get(rbdmirror_group_name, []) or
+          inventory_hostname in groups.get(nfs_group_name, [])
 
     - name: Configure repository for installing cephadm
       when: containerized_deployment | bool
@@ -1023,6 +1025,9 @@
         state: absent
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
 - name: Stop and remove legacy ceph nfs daemons
   hosts: "{{ nfs_group_name|default('nfss') }}"
   tags: 'ceph_nfs_adopt'
@@ -1046,7 +1051,11 @@
         cluster: "{{ cluster }}"
         state: enable
       environment:
+<<<<<<< HEAD
         CEPH_CONTAINER_IMAGE: "{{ ceph_docker_registry + '/' + ceph_docker_image + ':' + ceph_docker_image_tag if containerized_deployment | bool else '' }}"
+=======
+        CEPH_CONTAINER_IMAGE: "{{ ceph_docker_registry + '/' + ceph_docker_image + ':' + ceph_docker_image_tag if containerized_deployment | bool else None }}"
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
         CEPH_CONTAINER_BINARY: "{{ container_binary }}"
       delegate_to: "{{ groups[mon_group_name][0] }}"
 
@@ -1074,8 +1083,11 @@
     - name: Remove legacy ceph radosgw directory
       ansible.builtin.file:
         path: "/var/lib/ceph/radosgw/{{ cluster }}-rgw.{{ ansible_facts['hostname'] }}"
+<<<<<<< HEAD
 =======
 >>>>>>> faae48d75 (ceph-rgw: introduce rgw zone to the name schema)
+=======
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
         state: absent
 
     - name: Create nfs ganesha cluster
@@ -1101,8 +1113,11 @@
         CEPHADM_IMAGE: '{{ ceph_docker_registry }}/{{ ceph_docker_image }}:{{ ceph_docker_image_tag }}'
       when: nfs_obj_gw | bool
 
+<<<<<<< HEAD
 =======
 >>>>>>> ecea562d1 (nfs-ganesha support removal)
+=======
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
 - name: Redeploy rbd-mirror daemons
   hosts: "{{ rbdmirror_group_name|default('rbdmirrors') }}"
   become: true
@@ -1415,6 +1430,7 @@
     - "{{ rgw_group_name|default('rgws') }}"
     - "{{ mgr_group_name|default('mgrs') }}"
     - "{{ rbdmirror_group_name|default('rbdmirrors') }}"
+    - "{{ nfs_group_name|default('nfss') }}"
     - "{{ monitoring_group_name|default('monitoring') }}"
   become: true
   gather_facts: false

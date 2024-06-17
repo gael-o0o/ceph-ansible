@@ -12,7 +12,11 @@
   delegate_to: "{{ groups[mon_group_name][0] }}"
   when: nfs_obj_gw | bool
   environment:
+<<<<<<< HEAD
     CEPH_CONTAINER_IMAGE: "{{ ceph_docker_registry + '/' + ceph_docker_image + ':' + ceph_docker_image_tag if containerized_deployment | bool else '' }}"
+=======
+    CEPH_CONTAINER_IMAGE: "{{ ceph_docker_registry + '/' + ceph_docker_image + ':' + ceph_docker_image_tag if containerized_deployment | bool else None }}"
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
     CEPH_CONTAINER_BINARY: "{{ container_binary }}"
 
 - name: Set_fact ceph_nfs_rgw_access_key and ceph_nfs_rgw_secret_key

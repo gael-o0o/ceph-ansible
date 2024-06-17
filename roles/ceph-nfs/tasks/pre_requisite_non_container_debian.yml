@@ -59,7 +59,11 @@
             backup: true
             mode: "0644"
 
+<<<<<<< HEAD
 - name: Debian based systems - install required packages
+=======
+- name: Debain based systems - install required packages
+>>>>>>> 438da91b3 (Revert "nfs-ganesha support removal")
   block:
     - name: Debian based systems
       when: ceph_origin == 'repository' or ceph_origin == 'distro'
