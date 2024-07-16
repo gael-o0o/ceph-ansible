@@ -42,7 +42,11 @@ disks: "[ '/dev/sda', '/dev/sdb' ]"
 # For more boxes have a look at:
 #   - https://atlas.hashicorp.com/boxes/search?utf8=✓&sort=&provider=virtualbox&q=
 #   - https://download.gluster.org/pub/gluster/purpleidea/vagrant/
+<<<<<<< HEAD
 vagrant_box: centos/stream9
+=======
+vagrant_box: centos/atomic-host
+>>>>>>> 4a981a201 (Replace Centos stream 8 by stream 9)
 # client_vagrant_box: centos/stream9
 #ssh_private_key_path: "~/.ssh/id_rsa"
 # The sync directory changes based on vagrant box
